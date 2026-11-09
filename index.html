@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QazaqQuiz — Білім сайысы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo" id="homeBtn">⚡ QazaqQuiz</a>
+    <nav>
+        <button id="headerHome">Басты бет</button>
+        <button id="leaderboardBtn">🏆 Рейтинг</button>
+    </nav>
+</header>
+
+<main>
+
+<section id="home" class="screen active">
+    <div class="hero">
+        <div class="hero-text">
+            <span class="badge">🎯 ҚАЗАҚША ВИКТОРИНА ПЛАТФОРМАСЫ</span>
+            <h1>Ойна. Үйрен.<br><span>Жеңіске жет!</span></h1>
+            <p>QazaqQuiz — өз біліміңді тексеретін, достарыңмен жарысатын қызықты викторина платформасы.</p>
+            <button class="primary" id="createBtn">+ Викторина жасау</button>
+            <button class="secondary" id="playBtn">▶️ Соңғы викторинаны ойнау</button>
+            <button class="secondary" id="exampleBtn">🎮 Үлгі ойынды бастау</button>
+        </div>
+
+        <div class="quiz-card">
+            <div class="card-icon">🏆</div>
+            <h2>Білім жарысы</h2>
+            <p>Өз біліміңді дәлелде!</p>
+            <div class="option red">🔴 А нұсқасы</div>
+            <div class="option blue">🔵 В нұсқасы</div>
+            <div class="option yellow">🟡 С нұсқасы</div>
+            <div class="option green">🟢 D нұсқасы</div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <h2>🎮</h2>
+            <h3>Қызықты ойын</h3>
+            <p>Сұрақтарға жауап бер.</p>
+        </div>
+        <div class="feature">
+            <h2>⏱️</h2>
+            <h3>Уақыт санау</h3>
+            <p>Әр сұраққа уақыт беріледі.</p>
+        </div>
+        <div class="feature">
+            <h2>🏆</h2>
+            <h3>Жеңімпаз бол</h3>
+            <p>Рейтингте бірінші орын ал!</p>
+        </div>
+    </div>
+</section>
+
+<section id="builder" class="screen">
+    <h1>📝 Викторина құрастыру</h1>
+    <div class="panel">
+        <label>Викторина атауы</label>
+        <input id="quizTitle" placeholder="Мысалы: Қазақстан тарихы">
+
+        <label>Сұраққа берілетін уақыт</label>
+        <select id="timeLimit">
+            <option value="10">10 секунд</option>
+            <option value="15">15 секунд</option>
+            <option value="20" selected>20 секунд</option>
+            <option value="30">30 секунд</option>
+            <option value="45">45 секунд</option>
+            <option value="60">60 секунд</option>
+        </select>
+
+        <div id="questions"></div>
+
+        <button class="add-btn" id="addQuestion">+ Сұрақ қосу</button>
+        <button class="primary full" id="saveQuiz">Сақтау және жалғастыру →</button>
+    </div>
+</section>
+
+<section id="ready" class="screen">
+    <div class="panel center">
+        <h1>🚀 Ойынға дайынсың ба?</h1>
+        <h2 id="readyTitle"></h2>
+        <p id="readyInfo"></p>
+
+        <div class="qr-container">
+            <h3>📱 QR-код арқылы бөлісу</h3>
+            <p>Басқа құрылғыдан қосылу үшін QR-кодты сканерле.</p>
+            <div id="qrcode"></div>
+            <button class="secondary" id="copyLink" disabled>🔗 Сілтемені көшіру</button>
+            <p id="qrMessage" class="small-text">QR-код дайындалуда...</p>
+        </div>
+
+        <label>Ойыншының аты</label>
+        <input id="playerName" placeholder="Атыңды енгіз">
+        <button class="primary full" id="startGame">Ойынды бастау →</button>
+    </div>
+</section>
+
+<section id="game" class="screen">
+    <div class="game-info">
+        <h3 id="gameTitle"></h3>
+        <div class="score">⭐ <span id="score">0</span> ұпай</div>
+    </div>
+
+    <div class="timer-box">
+        <div class="timer-text">
+            <span id="questionCount"></span>
+            <span>⏱️ <span id="timer">20</span> сек</span>
+        </div>
+        <div class="timer-background">
+            <div id="timerBar"></div>
+        </div>
+    </div>
+
+    <div class="panel center">
+        <span id="questionNumber"></span>
+        <h1 id="questionText"></h1>
+        <div id="answers" class="answers"></div>
+        <h3 id="feedback"></h3>
+        <button class="primary" id="nextQuestion" hidden>Келесі сұрақ →</button>
+    </div>
+</section>
+
+<section id="result" class="screen">
+    <div class="panel center">
+        <div class="trophy">🏆</div>
+        <h1 id="resultTitle"></h1>
+        <h2 id="finalScore"></h2>
+        <p id="resultDescription"></p>
+        <div id="review"></div>
+        <button class="primary" id="restart">↻ Қайта ойнау</button>
+        <button class="secondary" id="goHome">Басты бет</button>
+    </div>
+</section>
+
+<section id="leaderboard" class="screen">
+    <div class="panel center">
+        <div class="trophy">🏆</div>
+        <h1>Көшбасшылар рейтингі</h1>
+        <p>QazaqQuiz үздік ойыншылары</p>
+        <div id="leaderboardList"></div>
+        <button class="primary" id="leaderboardHome">Басты бет</button>
+    </div>
+</section>
+
+</main>
+
+<footer>©️ 2026 QazaqQuiz — Білім болашақтың кілті.</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
